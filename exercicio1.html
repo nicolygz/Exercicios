@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 1 - IMC</title>
+</head>
+<body>
+    <h1>Exercício 1 - Cálculo do IMC</h1>
+    <button onclick="calcularIMC()">Calcular IMC</button>
+    <a href="index.html">Voltar ao menu</a>
+
+    <script>
+        function calcularIMC() {
+            while (true) {
+                let peso = parseFloat(prompt("Digite seu peso (kg):"));
+                let altura = parseFloat(prompt("Digite sua altura (m):"));
+                let imc = peso / (altura * altura);
+                let classificacao = "";
+
+                if (imc < 16) classificacao = "Baixo peso muito grave";
+                else if (imc < 17) classificacao = "Baixo peso grave";
+                else if (imc < 18.5) classificacao = "Baixo peso";
+                else if (imc < 25) classificacao = "Peso normal";
+                else if (imc < 30) classificacao = "Sobrepeso";
+                else if (imc < 35) classificacao = "Obesidade grau I";
+                else if (imc < 40) classificacao = "Obesidade grau II";
+                else classificacao = "Obesidade grau III";
+
+                alert(`IMC: ${imc.toFixed(2)} - ${classificacao}`);
+
+                if (prompt("Calcular outro IMC? (s/n)").toLowerCase() !== 's') break;
+            }
+        }
+    </script>
+</body>
+</html>

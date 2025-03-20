@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 2 - Faixa Etária</title>
+</head>
+<body>
+    <h1>Exercício 2 - Faixa Etária</h1>
+    <button onclick="faixaEtaria()">Verificar Faixa Etária</button>
+    <a href="index.html">Voltar ao menu</a>
+
+    <script>
+        function faixaEtaria() {
+            let contador = { crianca: 0, adolescente: 0, adulto: 0, idoso: 0 };
+
+            while (true) {
+                let idade = parseInt(prompt("Digite a idade da pessoa:"));
+                if (idade < 12) contador.crianca++;
+                else if (idade < 18) contador.adolescente++;
+                else if (idade < 60) contador.adulto++;
+                else contador.idoso++;
+
+                if (prompt("Inserir outra idade? (s/n)").toLowerCase() !== 's') break;
+            }
+
+            alert(`Crianças: ${contador.crianca}, Adolescentes: ${contador.adolescente}, Adultos: ${contador.adulto}, Idosos: ${contador.idoso}`);
+        }
+    </script>
+</body>
+</html>

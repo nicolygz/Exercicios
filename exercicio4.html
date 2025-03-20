@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 4 - Folha de Pagamento</title>
+</head>
+<body>
+    <h1>Exercício 4 - Folha de Pagamento</h1>
+    <button onclick="folhaPagamento()">Calcular Salário</button>
+    <a href="index.html">Voltar ao menu</a>
+
+    <script>
+        function folhaPagamento() {
+            while (true) {
+                let codigo = prompt("Digite o código do funcionário:");
+                let horasTrabalhadas = parseFloat(prompt("Digite as horas trabalhadas no mês:"));
+                let turno = prompt("Digite o turno (M - Matutino, V - Vespertino, N - Noturno):").toUpperCase();
+                let categoria = prompt("Digite a categoria (F - Funcionário, G - Gerente):").toUpperCase();
+                let salarioMinimo = parseFloat(prompt("Digite o salário mínimo atual:"));
+
+                let valorHora;
+                switch (categoria) {
+                    case "F":
+                        if (turno === "M") valorHora = salarioMinimo * 0.10;
+                        else if (turno === "V") valorHora = salarioMinimo * 0.15;
+                        else valorHora = salarioMinimo * 0.20;
+                        break;
+                    case "G":
+                        if (turno === "M") valorHora = salarioMinimo * 0.30;
+                        else if (turno === "V") valorHora = salarioMinimo * 0.35;
+                        else valorHora = salarioMinimo * 0.40;
+                        break;
+                    default:
+                        alert("Categoria inválida!");
+                        continue;
+                }
+
+                let salarioInicial = valorHora * horasTrabalhadas;
+                let auxilioAlimentacao = salarioInicial <= 800 ? salarioInicial * 0.25 :
+                                         (salarioInicial <= 1200 ? salarioInicial * 0.20 :
+                                         salarioInicial * 0.15);
+
+                let salarioFinal = salarioInicial + auxilioAlimentacao;
+
+                alert(`Código: ${codigo}
+Horas Trabalhadas: ${horasTrabalhadas}
+Turno: ${turno}
+Categoria: ${categoria}
+Valor da Hora: R$ ${valorHora.toFixed(2)}
+Salário Inicial: R$ ${salarioInicial.toFixed(2)}
+Auxílio Alimentação: R$ ${auxilioAlimentacao.toFixed(2)}
+Salário Final: R$ ${salarioFinal.toFixed(2)}`);
+
+                if (prompt("Calcular outro salário? (s/n)").toLowerCase() !== 's') break;
+            }
+        }
+    </script>
+</body>
+</html>

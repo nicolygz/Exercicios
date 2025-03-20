@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício 5 - Média Ponderada</title>
+</head>
+<body>
+    <h1>Exercício 5 - Média Ponderada</h1>
+    <button onclick="calcularMedia()">Calcular Média</button>
+    <a href="index.html">Voltar ao menu</a>
+
+    <script>
+        function calcularMedia() {
+            while (true) {
+                let nota1 = parseFloat(prompt("Digite a primeira nota:"));
+                let peso1 = parseFloat(prompt("Digite o peso da primeira nota:"));
+                let nota2 = parseFloat(prompt("Digite a segunda nota:"));
+                let peso2 = parseFloat(prompt("Digite o peso da segunda nota:"));
+                let nota3 = parseFloat(prompt("Digite a terceira nota:"));
+                let peso3 = parseFloat(prompt("Digite o peso da terceira nota:"));
+
+                let media = ((nota1 * peso1) + (nota2 * peso2) + (nota3 * peso3)) / (peso1 + peso2 + peso3);
+
+                let classificacao;
+                if (media >= 9) classificacao = "A (Excelente)";
+                else if (media >= 7) classificacao = "B (Bom)";
+                else if (media >= 5) classificacao = "C (Regular)";
+                else classificacao = "D (Reprovado)";
+
+                alert(`Média Ponderada: ${media.toFixed(2)}
+Classificação: ${classificacao}`);
+
+                if (prompt("Calcular outra média? (s/n)").toLowerCase() !== 's') break;
+            }
+        }
+    </script>
+</body>
+</html>
